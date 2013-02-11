@@ -141,7 +141,7 @@
     [self setTitleColor:[UIColor colorWithWhite:.8 alpha:1] forState:UIControlStateHighlighted];
     [self setTitleColor:[UIColor colorWithWhite:.7 alpha:1] forState:UIControlStateSelected];
     
-    [self setTitleShadowColor:[UIColor colorWithRed:0 green:0 blue:.5 alpha:1] forState:UIControlStateNormal];
+    [self setTitleShadowColor:[UIColor colorWithRed:.2 green:.2 blue:.5 alpha:1] forState:UIControlStateNormal];
     
 }
 - (void)setGreenStyle
@@ -161,7 +161,7 @@
     [self setTitleColor:[UIColor colorWithWhite:.8 alpha:1] forState:UIControlStateHighlighted];
     [self setTitleColor:[UIColor colorWithWhite:.7 alpha:1] forState:UIControlStateSelected];
     
-    [self setTitleShadowColor:[UIColor colorWithRed:0 green:0 blue:.5 alpha:1] forState:UIControlStateNormal];
+    [self setTitleShadowColor:[UIColor colorWithRed:.1 green:.5 blue:.1 alpha:1] forState:UIControlStateNormal];
     
 }
 @end
