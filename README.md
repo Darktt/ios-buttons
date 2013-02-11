@@ -20,4 +20,4 @@ iOS 6+, ARC
 Screenshot
 ==========
 
-![Screenshot](//raw.github.com/jcampbell1/ios-buttons/master/screenshot.png)
+![Screenshot](https://raw.github.com/jcampbell1/ios-buttons/master/screenshot.png)
