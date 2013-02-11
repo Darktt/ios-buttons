@@ -9,3 +9,15 @@ This requires iOS6 because it uses resizableImageWithCapInsets:resizingMode:
 
 Usage
 =====
+
+In the interface builder, set the button class to `J1Button`
+
+Requirements
+============
+
+iOS 6+, ARC
+
+Screenshot
+==========
+
+![Screenshot](//raw.github.com/jcampbell1/ios-buttons/master/screenshot.png)
