@@ -17,7 +17,7 @@ Requirements
 
 iOS 6+, ARC
 
-This requires iOS6 because it uses resizableImageWithCapInsets:resizingMode: 
+This requires iOS6 because it uses `resizableImageWithCapInsets:resizingMode:`
 
 Screenshot
 ==========
