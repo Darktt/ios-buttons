@@ -17,6 +17,10 @@
 @property (weak, nonatomic) IBOutlet J1Button *green;
 @property (weak, nonatomic) IBOutlet J1Button *grayOnBlack;
 
+@property (strong, nonatomic) IBOutlet UISwitch *sizeToggler;
+@property (strong, nonatomic) IBOutlet UISlider *scaleTest;
+@property (nonatomic) CGRect defaultFrame;
+
 
 @end
 
@@ -25,6 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.defaultFrame = self.button.frame;
     self.red.color = J1ButtonColorRed;
     self.blue.color = J1ButtonColorBlue;
     self.green.color = J1ButtonColorGreen;
@@ -67,6 +72,17 @@
     b.selected = NO;
     b.highlighted = NO;
     b.enabled = YES;
+}
+- (IBAction)toggleSize:(id)sender {
+    self.button.size = self.sizeToggler.isOn ? J1ButtonSizeNormal : J1ButtonSizeSmall;
+}
+- (IBAction)changeScale:(id)sender {
+    self.button.frame = CGRectMake(
+        self.defaultFrame.origin.x,
+        self.defaultFrame.origin.y,
+        self.defaultFrame.size.width * self.scaleTest.value,
+        self.defaultFrame.size.height * self.scaleTest.value
+    );
 }
 
 

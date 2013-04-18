@@ -7,7 +7,11 @@
 //
 
 #import "J1Button.h"
+@interface J1Button()
 
+@property (nonatomic,readonly) UIEdgeInsets insets;
+
+@end
 @implementation J1Button
 
 
@@ -28,6 +32,11 @@
 -(void)commonInit
 {
     self.color = J1ButtonColorGray;
+}
+- (void) setSize:(J1ButtonSize)size
+{
+    _size = size;
+    self.color = self.color;
 }
 - (void) setColor:(J1ButtonColor)color
 {
@@ -55,17 +64,7 @@
 }
 - (void)setGrayStyle
 {
-    UIEdgeInsets insets = UIEdgeInsetsMake(8, 8, 8, 8);
-    UIImage *n = [[UIImage imageNamed:@"J1-gray-normal.png"] resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
-    UIImage *d = [[UIImage imageNamed:@"J1-gray-disabled.png"] resizableImageWithCapInsets:insets  resizingMode:UIImageResizingModeStretch];
-    UIImage *h = [[UIImage imageNamed:@"J1-gray-highlighted.png"] resizableImageWithCapInsets:insets  resizingMode:UIImageResizingModeStretch];
-    UIImage *s = [[UIImage imageNamed:@"J1-gray-selected.png"] resizableImageWithCapInsets:insets  resizingMode:UIImageResizingModeStretch];
-    
-    
-    [self setBackgroundImage:n forState:UIControlStateNormal];
-    [self setBackgroundImage:d forState:UIControlStateDisabled];
-    [self setBackgroundImage:h forState:UIControlStateHighlighted];
-    [self setBackgroundImage:s forState:UIControlStateSelected];
+    [self applyColor:@"gray"];
     
     self.titleLabel.shadowOffset = CGSizeMake(0, 1);
     
@@ -80,17 +79,7 @@
 }
 - (void)setGrayOnBlackStyle
 {
-    UIEdgeInsets insets = UIEdgeInsetsMake(8, 8, 8, 8);
-    UIImage *n = [[UIImage imageNamed:@"J1-grayOnBlack-normal.png"] resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
-    UIImage *d = [[UIImage imageNamed:@"J1-grayOnBlack-disabled.png"] resizableImageWithCapInsets:insets  resizingMode:UIImageResizingModeStretch];
-    UIImage *h = [[UIImage imageNamed:@"J1-grayOnBlack-highlighted.png"] resizableImageWithCapInsets:insets  resizingMode:UIImageResizingModeStretch];
-    UIImage *s = [[UIImage imageNamed:@"J1-grayOnBlack-selected.png"] resizableImageWithCapInsets:insets  resizingMode:UIImageResizingModeStretch];
-    
-    
-    [self setBackgroundImage:n forState:UIControlStateNormal];
-    [self setBackgroundImage:d forState:UIControlStateDisabled];
-    [self setBackgroundImage:h forState:UIControlStateHighlighted];
-    [self setBackgroundImage:s forState:UIControlStateSelected];
+    [self applyColor:@"grayOnBlack"];
     
     self.titleLabel.shadowOffset = CGSizeMake(0, 1);
     
@@ -106,14 +95,7 @@
 
 - (void)setRedStyle
 {
-    UIEdgeInsets insets = UIEdgeInsetsMake(8, 8, 8, 8);
-    UIImage *n = [[UIImage imageNamed:@"J1-red-normal.png"] resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
-    UIImage *h = [[UIImage imageNamed:@"J1-red-highlighted.png"] resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
-    UIImage *s = [[UIImage imageNamed:@"J1-red-selected.png"] resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
-    
-    [self setBackgroundImage:n forState:UIControlStateNormal];
-    [self setBackgroundImage:h forState:UIControlStateHighlighted];
-    [self setBackgroundImage:s forState:UIControlStateSelected];
+    [self applyColor:@"red"];
         
     self.titleLabel.shadowOffset = CGSizeMake(0, -1);
     
@@ -126,14 +108,7 @@
 }
 - (void)setBlueStyle
 {
-    UIEdgeInsets insets = UIEdgeInsetsMake(8, 8, 8, 8);
-    UIImage *n = [[UIImage imageNamed:@"J1-blue-normal.png"] resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
-    UIImage *h = [[UIImage imageNamed:@"J1-blue-highlighted.png"] resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
-    UIImage *s = [[UIImage imageNamed:@"J1-blue-selected.png"] resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
-    
-    [self setBackgroundImage:n forState:UIControlStateNormal];
-    [self setBackgroundImage:h forState:UIControlStateHighlighted];
-    [self setBackgroundImage:s forState:UIControlStateSelected];
+    [self applyColor:@"blue"];
     
     self.titleLabel.shadowOffset = CGSizeMake(0, -1);
     
@@ -146,14 +121,7 @@
 }
 - (void)setGreenStyle
 {
-    UIEdgeInsets insets = UIEdgeInsetsMake(8, 8, 8, 8);
-    UIImage *n = [[UIImage imageNamed:@"J1-green-normal.png"] resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
-    UIImage *h = [[UIImage imageNamed:@"J1-green-highlighted.png"] resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
-    UIImage *s = [[UIImage imageNamed:@"J1-green-selected.png"] resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
-    
-    [self setBackgroundImage:n forState:UIControlStateNormal];
-    [self setBackgroundImage:h forState:UIControlStateHighlighted];
-    [self setBackgroundImage:s forState:UIControlStateSelected];
+    [self applyColor:@"green"];
     
     self.titleLabel.shadowOffset = CGSizeMake(0, -1);
     
@@ -163,5 +131,33 @@
     
     [self setTitleShadowColor:[UIColor colorWithRed:.1 green:.5 blue:.1 alpha:1] forState:UIControlStateNormal];
     
+}
+- (void)applyColor:(NSString*)color
+{
+    UIImage *n = [self imageWithColorNamed:color stateNamed:@"normal"];
+    UIImage *h = [self imageWithColorNamed:color stateNamed:@"highlighted"];
+    UIImage *s = [self imageWithColorNamed:color stateNamed:@"selected"];
+    // disabled always takes a gray color
+    UIImage *d = [self imageWithColorNamed:@"gray" stateNamed:@"disabled"];
+    if([color isEqual:@"grayOnBlack"]) {
+        d = [self imageWithColorNamed:@"grayOnBlack" stateNamed:@"disabled"];
+    }
+    
+    [self setBackgroundImage:n forState:UIControlStateNormal];
+    [self setBackgroundImage:d forState:UIControlStateDisabled];
+    [self setBackgroundImage:h forState:UIControlStateHighlighted];
+    [self setBackgroundImage:s forState:UIControlStateSelected];
+}
+- (UIImage*) imageWithColorNamed:(NSString*) color stateNamed:(NSString*) state
+{
+    NSString *size = self.size == J1ButtonSizeSmall ? @"-small" : @"";
+    NSString *imageFile = [NSString stringWithFormat:@"J1-%@%@-%@.png",color,size,state];
+    return [[UIImage imageNamed:imageFile] resizableImageWithCapInsets:self.insets resizingMode:UIImageResizingModeStretch];
+}
+- (UIEdgeInsets)insets
+{
+    return self.size == J1ButtonSizeSmall ?
+        UIEdgeInsetsMake(3, 3, 3, 3) :
+        UIEdgeInsetsMake(8, 8, 8, 8);
 }
 @end

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -160,7 +160,7 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="Lnd-Vq-Nvw">
-                                <rect key="frame" x="20" y="388" width="280" height="44"/>
+                                <rect key="frame" x="20" y="411" width="280" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Gray"/>
@@ -171,6 +171,41 @@
                                     <action selector="changeBackgroundColor:" destination="2" eventType="valueChanged" id="Yk4-Eu-OV3"/>
                                 </connections>
                             </segmentedControl>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="2" id="wEt-PC-ykn">
+                                <rect key="frame" x="18" y="370" width="284" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="changeScale:" destination="2" eventType="valueChanged" id="YES-p2-KcA"/>
+                                </connections>
+                            </slider>
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="9m3-6X-iw3">
+                                <rect key="frame" x="197" y="315" width="79" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="toggleSize:" destination="2" eventType="valueChanged" id="7Vi-rA-Lp1"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Backgroud Color" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uBY-Sm-gt9">
+                                <rect key="frame" x="28" y="391" width="127" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Scale" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Z28-sS-UsG">
+                                <rect key="frame" x="28" y="350" width="127" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="corner size" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nGI-tM-Cfn">
+                                <rect key="frame" x="197" y="297" width="127" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.90844228316326525" green="0.90844228316326525" blue="0.90844228316326525" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -181,6 +216,8 @@
                         <outlet property="grayOnBlack" destination="3sV-OB-pgL" id="KDj-eZ-MtC"/>
                         <outlet property="green" destination="sdg-ST-hhy" id="yzT-lw-bL8"/>
                         <outlet property="red" destination="ntc-gP-l7R" id="IFB-dX-1VX"/>
+                        <outlet property="scaleTest" destination="wEt-PC-ykn" id="AeU-iB-9Jb"/>
+                        <outlet property="sizeToggler" destination="9m3-6X-iw3" id="hgU-GK-Ujw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -195,6 +232,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
                 <relationship kind="action" name="changeBackgroundColor:"/>
+                <relationship kind="action" name="changeScale:"/>
                 <relationship kind="action" name="showBlue:"/>
                 <relationship kind="action" name="showDisabledState:"/>
                 <relationship kind="action" name="showGray:"/>
@@ -204,11 +242,14 @@
                 <relationship kind="action" name="showNormalState:"/>
                 <relationship kind="action" name="showRed:"/>
                 <relationship kind="action" name="showSelectedState:"/>
+                <relationship kind="action" name="toggleSize:"/>
                 <relationship kind="outlet" name="blue" candidateClass="J1Button"/>
                 <relationship kind="outlet" name="button" candidateClass="J1Button"/>
                 <relationship kind="outlet" name="grayOnBlack" candidateClass="J1Button"/>
                 <relationship kind="outlet" name="green" candidateClass="J1Button"/>
                 <relationship kind="outlet" name="red" candidateClass="J1Button"/>
+                <relationship kind="outlet" name="scaleTest" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="sizeToggler" candidateClass="UISwitch"/>
             </relationships>
         </class>
     </classes>

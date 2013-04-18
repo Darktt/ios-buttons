@@ -16,9 +16,14 @@ typedef enum {
     J1ButtonColorGreen
 } J1ButtonColor;
 
+typedef enum {
+    J1ButtonSizeNormal = 1,
+    J1ButtonSizeSmall
+} J1ButtonSize;
 
 @interface J1Button : UIButton
 
 @property (nonatomic) J1ButtonColor color;
+@property (nonatomic) J1ButtonSize size;
 
 @end
